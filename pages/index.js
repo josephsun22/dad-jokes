@@ -1,5 +1,6 @@
 import { useState, useEffect, useCallback } from "react";
-import { highlightTerm } from '../utils/highlightTerm';
+import { highlightTerm } from "../utils/highlightTerm";
+import { groupJokesByLength } from "../utils/groupJokesByLength";
 
 export default function JokesPage() {
   const [randomJoke, setRandomJoke] = useState("");
@@ -41,14 +42,31 @@ export default function JokesPage() {
     fetchSearchJokes();
   }, []);
 
+  const groupedJokes = groupJokesByLength(searchJokes);
+
   return (
     <div>
       <h1>Show Random Dad Joke</h1>
       {loading ? <p>Loading...</p> : <p>{randomJoke}</p>}
 
       <h1>Show 30 jokes</h1>
+      <h2>Short Jokes</h2>
       <ul>
-        {searchJokes.map((joke, index) => (
+        {groupedJokes.Short.map((joke, index) => (
+          <li key={index}>{highlightTerm(joke, term)}</li>
+        ))}
+      </ul>
+
+      <h2>Medium Jokes</h2>
+      <ul>
+        {groupedJokes.Medium.map((joke, index) => (
+          <li key={index}>{highlightTerm(joke, term)}</li>
+        ))}
+      </ul>
+
+      <h2>Long Jokes</h2>
+      <ul>
+        {groupedJokes.Long.map((joke, index) => (
           <li key={index}>{highlightTerm(joke, term)}</li>
         ))}
       </ul>

@@ -1,30 +1,11 @@
 import { useState, useEffect, useCallback } from "react";
 import { highlightTerm } from "../utils/highlightTerm";
 import { groupJokesByLength } from "../utils/groupJokesByLength";
+import SearchBar from "../components/SearchBar";
 
 export default function JokesPage() {
-  const [randomJoke, setRandomJoke] = useState("");
   const [term, setTerm] = useState("time");
   const [searchJokes, setSearchJokes] = useState([]);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    async function fetchRandomJoke() {
-      try {
-        const response = await fetch("/api/randomJoke");
-        const data = await response.json();
-        setRandomJoke(data.joke);
-      } catch (error) {
-        console.error("Error fetching joke:", error);
-        setRandomJoke("Failed to fetch joke");
-      } finally {
-        setLoading(false);
-      }
-    }
-
-    fetchRandomJoke();
-  }, []);
-
   useEffect(() => {
     async function fetchSearchJokes() {
       try {
@@ -42,12 +23,21 @@ export default function JokesPage() {
     fetchSearchJokes();
   }, []);
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log('Search Term:', searchTerm);
+    // Handle the search operations
+  };
+
   const groupedJokes = groupJokesByLength(searchJokes);
 
   return (
     <div>
-      <h1>Show Random Dad Joke</h1>
-      {loading ? <p>Loading...</p> : <p>{randomJoke}</p>}
+      <SearchBar
+        searchTerm={term}
+        setSearchTerm={setTerm}
+        handleSubmit={handleSubmit}
+      />
 
       <h1>Show 30 jokes</h1>
       <h2>Short Jokes</h2>

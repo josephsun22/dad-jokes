@@ -18,7 +18,6 @@ export default async function handler(req, res) {
       );
 
       const jokes = response.data.results.map(item => item.joke);
-      console.log(typeof jokes)
       res.status(200).json({ jokes });
     } catch (error) {
         console.error('Error fetching data:', error);

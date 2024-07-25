@@ -1,9 +1,5 @@
 import { GoogleFonts } from "next-google-fonts";
-import { useState, useEffect, useCallback, useRef } from "react";
 import Hero from "../components/Hero";
-import SearchBar from "../components/SearchBar";
-import GroupedJokes from "../components/GroupedJokes";
-import RandomJoke from "@/components/RandomJoke";
 
 export default function JokesPage() {
   return (

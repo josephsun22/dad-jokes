@@ -1,6 +1,7 @@
 import { useState, useEffect, useCallback, useRef } from "react";
 import SearchBar from "@/components/SearchBar";
 import GroupedJokes from "@/components/GroupedJokes";
+import GoHomeButton from "@/components/GoHomeButton";
 
 const index = () => {
   const [term, setTerm] = useState("");
@@ -60,6 +61,7 @@ const index = () => {
         searching={searching}
         debouncing={isDebouncing}
       />
+      <GoHomeButton />
     </>
   );
 };

@@ -5,7 +5,7 @@ import { useRouter } from "next/router";
 function Hero() {
   const router = useRouter();
 
-  const handleGrabNGoClick = () => {
+  const handleRandomClick = () => {
     // Replace '/grab-n-go' with the path you want to navigate to
     router.push("/randomJoke");
   };
@@ -39,10 +39,10 @@ function Hero() {
           </div>
           <div className="flex justify-center mx-auto">
             <button
-              onClick={handleGrabNGoClick}
+              onClick={handleRandomClick}
               className="bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-full py-4 px-8 mr-10 transition-transform duration-200 transform hover:-translate-y-1 shadow-lg"
             >
-              Grab N' Go
+              Random Joke
             </button>
             <button
               onClick={handleSearchJokesClick}

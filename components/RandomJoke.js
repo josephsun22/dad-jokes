@@ -1,5 +1,6 @@
 import { GoogleFonts } from "next-google-fonts";
 import { useState, useEffect } from "react";
+import GoHomeButton from "./GoHomeButton";
 
 const RandomJoke = () => {
   const [randomJoke, setRandomJoke] = useState("");
@@ -48,6 +49,7 @@ const RandomJoke = () => {
 >
           {loading ? "Generating..." : "Generate Another !"}
         </button>
+        <GoHomeButton />
       </div>
     </div>
     </>

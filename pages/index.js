@@ -1,13 +1,15 @@
 import { useState, useEffect, useCallback, useRef } from "react";
+// import Header from "../components/Header";
 import SearchBar from "../components/SearchBar";
 import GroupedJokes from "../components/GroupedJokes";
 import RandomJoke from "@/components/RandomJoke";
 
 export default function JokesPage() {
   const [term, setTerm] = useState("");
-  const [searching, setSearching] = useState(false)
+  const [searching, setSearching] = useState(false);
   const [searchJokes, setSearchJokes] = useState([]);
   const debounceRef = useRef(null);
+  const [isDebouncing, setIsDebouncing] = useState(false);
 
   const fetchSearchJokes = useCallback(async (term) => {
     setSearching(true);
@@ -19,7 +21,7 @@ export default function JokesPage() {
       console.error("Error fetching jokes:", error);
       setSearchJokes([]);
     } finally {
-      setSearching(false)
+      setSearching(false);
     }
   }, []);
 
@@ -30,27 +32,38 @@ export default function JokesPage() {
     }
 
     // Set new timeout
-    debounceRef.current = setTimeout(() => {
-      if (term.trim()) {
+    if (term.trim()) {
+      setIsDebouncing(true);
+      console.log("Debouncing started" + isDebouncing);
+      debounceRef.current = setTimeout(() => {
         fetchSearchJokes(term);
-      }
-    }, 1000); // Type delay time here
+        setIsDebouncing(false);
+        console.log("Debouncing ended"+ isDebouncing);
+      }, 1000); // Type delay time here
+    } else {
+      setIsDebouncing(false);
+    }
 
     // Cleanup function to clear the timeout on unmount
     return () => {
       if (debounceRef.current) {
         clearTimeout(debounceRef.current);
+        setIsDebouncing(false);
       }
     };
   }, [term, fetchSearchJokes]);
 
   return (
     <div>
+      {/* <Header /> */}
       <RandomJoke />
       <SearchBar searchTerm={term} setSearchTerm={setTerm} />
-
-      <GroupedJokes jokes={searchJokes} term={term} searching={searching}/>
-   
+      <GroupedJokes
+        jokes={searchJokes}
+        term={term}
+        searching={searching}
+        debouncing={isDebouncing}
+      />
     </div>
   );
 }

@@ -1,8 +1,7 @@
-import React from "react";
 import { highlightTerm } from "../utils/highlightTerm";
 import { groupJokesByLength } from "../utils/groupJokesByLength";
 
-const GroupedJokes = ({ jokes, term, searching}) => {
+const GroupedJokes = ({ jokes, term, searching, debouncing }) => {
   const groupedJokes = groupJokesByLength(jokes);
 
   const renderJokesList = (jokesList) => (
@@ -20,6 +19,9 @@ const GroupedJokes = ({ jokes, term, searching}) => {
   );
 
   const renderContent = () => {
+    if (debouncing) {
+      return <p className="text-center text-gray-600">Typing...</p>;
+    }
     if (searching) {
       return <p className="text-center text-gray-600">Searching...</p>;
     }

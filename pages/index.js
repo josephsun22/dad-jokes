@@ -9,7 +9,6 @@ export default function JokesPage() {
   const debounceRef = useRef(null);
 
   const fetchSearchJokes = useCallback(async (term) => {
-    setLoading(true);
     try {
       const response = await fetch(`/api/searchJokes?term=${term}`);
       const data = await response.json();
@@ -17,8 +16,6 @@ export default function JokesPage() {
     } catch (error) {
       console.error("Error fetching jokes:", error);
       setSearchJokes([]);
-    } finally {
-      setLoading(false);
     }
   }, []);
 

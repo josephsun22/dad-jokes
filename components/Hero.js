@@ -2,16 +2,14 @@ import React from "react";
 import Image from "next/image";
 import { useRouter } from "next/router";
 
-function Hero() {
+const Hero = () => {
   const router = useRouter();
 
   const handleRandomClick = () => {
-    // Replace '/grab-n-go' with the path you want to navigate to
     router.push("/randomJoke");
   };
 
   const handleSearchJokesClick = () => {
-    // Replace '/search-jokes' with the path you want to navigate to
     router.push("/search");
   };
 
@@ -34,7 +32,7 @@ function Hero() {
 
           <div className="flex items-center justify-center mt-5 mb-10">
             <p className="text-white text-2xl mb-8 mr-5 font-bold">
-              No Worries! I'm here to help!
+              No Worries! I am here to help!
             </p>
           </div>
           <div className="flex justify-center mx-auto">

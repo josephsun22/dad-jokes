@@ -3,7 +3,7 @@ import SearchBar from "@/components/SearchBar";
 import GroupedJokes from "@/components/GroupedJokes";
 import GoHomeButton from "@/components/GoHomeButton";
 
-const index = () => {
+export default function Search() {
   const [term, setTerm] = useState("");
   const [searching, setSearching] = useState(false);
   const [searchJokes, setSearchJokes] = useState([]);
@@ -65,5 +65,3 @@ const index = () => {
     </>
   );
 };
-
-export default index;

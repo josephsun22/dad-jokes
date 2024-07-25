@@ -1,6 +1,20 @@
 import React from "react";
+import Image from "next/image";
+import { useRouter } from "next/router";
 
 function Hero() {
+  const router = useRouter();
+
+  const handleGrabNGoClick = () => {
+    // Replace '/grab-n-go' with the path you want to navigate to
+    router.push("/randomJoke");
+  };
+
+  const handleSearchJokesClick = () => {
+    // Replace '/search-jokes' with the path you want to navigate to
+    router.push("/search");
+  };
+
   return (
     <div
       className="h-screen text-white"
@@ -10,12 +24,7 @@ function Hero() {
       }}
     >
       <div class="container mx-auto flex px-5 py-24 items-center justify-center flex-col">
-        <img
-          width="128"
-          height="128"
-          src="./dad.png"
-          alt="dad-logo"
-        />
+        <Image width="128" height="128" src="/dad.png" alt="dad-logo" />
         <div class="text-center lg:w-5/12 w-full">
           <div className="flex items-center justify-center">
             <h1 className="text-white my-5 mb-10 text-3xl font-bold leading-tight">
@@ -24,14 +33,21 @@ function Hero() {
           </div>
 
           <div className="flex items-center justify-center mt-5 mb-10">
-            <p className="text-white text-2xl mb-8 mr-5 font-bold">No Worries! I'm here to help!</p>
-
+            <p className="text-white text-2xl mb-8 mr-5 font-bold">
+              No Worries! I'm here to help!
+            </p>
           </div>
           <div className="flex justify-center mx-auto">
-            <button className="bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-full py-4 px-8 mr-10 transition-transform duration-200 transform hover:-translate-y-1 shadow-lg">
+            <button
+              onClick={handleGrabNGoClick}
+              className="bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-full py-4 px-8 mr-10 transition-transform duration-200 transform hover:-translate-y-1 shadow-lg"
+            >
               Grab N' Go
             </button>
-            <button className="ml-4 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-full py-4 px-8 transition-transform duration-200 transform hover:-translate-y-1 shadow-lg">
+            <button
+              onClick={handleSearchJokesClick}
+              className="ml-4 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-full py-4 px-8 transition-transform duration-200 transform hover:-translate-y-1 shadow-lg"
+            >
               Search Jokes
             </button>
           </div>

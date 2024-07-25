@@ -1,4 +1,4 @@
-import React from "react";
+import { GoogleFonts } from "next-google-fonts";
 import { useState, useEffect } from "react";
 
 const RandomJoke = () => {
@@ -25,7 +25,9 @@ const RandomJoke = () => {
 
 
   return (
-    <div className="flex flex-col items-center justify-center bg-gray-50 p-6" style={{
+  <>
+    <GoogleFonts href="https://fonts.googleapis.com/css2?family=Cantarell:ital,wght@0,400;0,700;1,400;1,700&family=Cute+Font&display=swap" rel="stylesheet"> </GoogleFonts>
+    <div className="flex flex-col items-center justify-center h-screen w-screen p-6" style={{
       background: "linear-gradient(90deg, rgba(131, 126, 226, 1) 24%, rgba(114, 114, 226, 1) 58%, rgba(0, 212, 255, 1) 100%)"
     }}>
       <h1 className="mb-10 block text-center font-light text-5xl text-gray-900">
@@ -48,6 +50,7 @@ const RandomJoke = () => {
         </button>
       </div>
     </div>
+    </>
   );
 };
 

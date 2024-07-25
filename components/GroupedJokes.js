@@ -21,24 +21,30 @@ const GroupedJokes = ({ jokes, term }) => {
 
   return (
     <div className="flex justify-center min-h-screen bg-gray-50">
-      <div className="w-[50vw] p-6  rounded-lg shadow-lg ">
+      <div className="w-[50vw] p-6 rounded-lg shadow-lg">
         <h1 className="text-3xl font-bold mb-6 text-center">Search Results...</h1>
-        <div className="mb-4">
-          <h2 className="text-2xl font-semibold mb-2 text-center">Short Jokes</h2>
-          {renderJokesList(groupedJokes.Short)}
-        </div>
-        <div className="mb-4">
-          <h2 className="text-2xl font-semibold mb-2 text-center">Medium Jokes</h2>
-          {renderJokesList(groupedJokes.Medium)}
-        </div>
-        <div className="mb-4">
-          <h2 className="text-2xl font-semibold mb-2 text-center">Long Jokes</h2>
-          {renderJokesList(groupedJokes.Long)}
-        </div>
+        {!term ? (
+          <p className="text-center text-gray-600">Start typing to search!</p>
+        ) : (
+          <>
+            <div className="mb-4">
+              <h2 className="text-2xl font-semibold mb-2 text-center">Short Jokes</h2>
+              {renderJokesList(groupedJokes.Short)}
+            </div>
+            <div className="mb-4">
+              <h2 className="text-2xl font-semibold mb-2 text-center">Medium Jokes</h2>
+              {renderJokesList(groupedJokes.Medium)}
+            </div>
+            <div className="mb-4">
+              <h2 className="text-2xl font-semibold mb-2 text-center">Long Jokes</h2>
+              {renderJokesList(groupedJokes.Long)}
+            </div>
+          </>
+        )}
       </div>
     </div>
   );
 };
 
-
 export default GroupedJokes;
+

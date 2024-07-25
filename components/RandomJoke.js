@@ -27,7 +27,7 @@ const RandomJoke = () => {
   return (
     <div className="flex flex-col items-center justify-center bg-gray-50 p-6">
       <h1 className="mb-10 block text-center font-light text-6xl text-gray-700">
-        Get Your Random Joke:
+        Get A Random Joke
       </h1>
       <div className="w-[50vw] bg-white p-6 rounded-lg shadow-md  text-center">
         <div className="mb-4">

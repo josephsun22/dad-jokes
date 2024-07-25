@@ -1,5 +1,6 @@
+import { GoogleFonts } from "next-google-fonts";
 import { useState, useEffect, useCallback, useRef } from "react";
-// import Header from "../components/Header";
+import Hero from "../components/Hero";
 import SearchBar from "../components/SearchBar";
 import GroupedJokes from "../components/GroupedJokes";
 import RandomJoke from "@/components/RandomJoke";
@@ -55,7 +56,8 @@ export default function JokesPage() {
 
   return (
     <div>
-      {/* <Header /> */}
+      <GoogleFonts href="https://fonts.googleapis.com/css2?family=Cantarell:ital,wght@0,400;0,700;1,400;1,700&family=Cute+Font&display=swap" rel="stylesheet"> </GoogleFonts>
+      <Hero />
       <RandomJoke />
       <SearchBar searchTerm={term} setSearchTerm={setTerm} />
       <GroupedJokes

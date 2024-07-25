@@ -47,8 +47,10 @@ const GroupedJokes = ({ jokes, term, searching, debouncing }) => {
   };
 
   return (
-    <div className="flex justify-center min-h-screen bg-gray-50">
-      <div className="w-[50vw] p-6 rounded-lg shadow-lg">
+    <div className="flex justify-center min-h-screen bg-opacity-10" style={{
+      background: "linear-gradient(90deg, rgba(131, 126, 226, 1) 24%, rgba(114, 114, 226, 1) 58%, rgba(0, 212, 255, 1) 100%)"
+    }}>
+      <div className="w-[50vw] p-6 rounded-lg shadow-lg bg-white bg-opacity-10">
         <h1 className="text-3xl font-bold mb-6 text-center">Search Results...</h1>
         {renderContent()}
       </div>

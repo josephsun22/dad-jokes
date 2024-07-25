@@ -7,11 +7,13 @@ const SearchBar = ({ searchTerm, setSearchTerm }) => {
   };
 
   return (
-    <div className="flex justify-center items-center h-[30vh] bg-gray-50">
+    <div className="flex justify-center items-center h-[30vh] bg-gray-50" style={{
+        background: "linear-gradient(90deg, rgba(131, 126, 226, 1) 24%, rgba(114, 114, 226, 1) 58%, rgba(0, 212, 255, 1) 100%)"
+      }}>
       <div className="w-1/2 max-auto mb-10">
         <label
           htmlFor="search"
-          className="mb-10 block text-center font-light text-6xl text-gray-700"
+          className="mb-10 block text-center font-light text-5xl text-gray-900"
         >
           Search for Dad Jokes
         </label>

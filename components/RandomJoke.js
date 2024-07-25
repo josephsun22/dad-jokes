@@ -25,23 +25,25 @@ const RandomJoke = () => {
 
 
   return (
-    <div className="flex flex-col items-center justify-center bg-gray-50 p-6">
-      <h1 className="mb-10 block text-center font-light text-6xl text-gray-700">
-        Get A Random Joke
+    <div className="flex flex-col items-center justify-center bg-gray-50 p-6" style={{
+      background: "linear-gradient(90deg, rgba(131, 126, 226, 1) 24%, rgba(114, 114, 226, 1) 58%, rgba(0, 212, 255, 1) 100%)"
+    }}>
+      <h1 className="mb-10 block text-center font-light text-5xl text-gray-900">
+        Grab a Random Joke From Here
       </h1>
-      <div className="w-[50vw] bg-white p-6 rounded-lg shadow-md  text-center">
+      <div className="w-[50vw] bg-white bg-opacity-10 p-6 rounded-lg shadow-md  text-center">
         <div className="mb-4">
           {loading ? (
-            <p className="text-gray-500">Loading...</p>
+            <p className="text-gray-900">Loading...</p>
           ) : (
-            <p className="text-lg text-gray-700">{randomJoke}</p>
+            <p className="text-2xl text-gray-900">{randomJoke}</p>
           )}
         </div>
         <button
           onClick={fetchRandomJoke}
           disabled={loading}
-          className={`text-white end-1.5 bottom-1.5 ${loading ? 'bg-gray-500 cursor-not-allowed' : 'bg-blue-700 hover:bg-blue-800'} focus:ring-4 text-lg  focus:outline-none font-light rounded-lg px-12 py-[9px]`}
-        >
+          className="ml-4 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-full py-4 px-8 transition-transform duration-200 transform hover:-translate-y-1 shadow-lg"
+>
           {loading ? "Generating..." : "Generate Another !"}
         </button>
       </div>

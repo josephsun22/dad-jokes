@@ -4,7 +4,7 @@ const SearchBar = ({ searchTerm, setSearchTerm, handleSubmit }) => {
   };
 
   return (
-    <div className="flex justify-center items-center h-[30vh] bg-gray-100">
+    <div className="flex justify-center items-center h-[30vh] bg-gray-50">
       <div className="w-1/2 max-auto mb-10">
         <form onSubmit={handleSubmit}>
           <label
@@ -34,7 +34,7 @@ const SearchBar = ({ searchTerm, setSearchTerm, handleSubmit }) => {
               type="search"
               value={searchTerm}
               onChange={handleInputChange}
-              className="block px-10 w-full p-4 ps-10 text border border-gray-300 rounded-lg focus:outline-blue-600"
+              className="block px-10 w-full p-4 ps-10 text border border-gray-300 rounded-lg focus:outline-blue-600 "
             />
             <button
               type="submit"

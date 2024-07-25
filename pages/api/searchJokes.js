@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 export default async function handler(req, res) {
-    const { limit = 30, term="time" } = req.query; // Set default limit to 30 if not provided
+    const { limit = 30, term } = req.query; // Set default limit to 30 if not provided
     console.log(`Received query parameters: limit=${limit}, term=${term}`); // Log query parameters
     try {
       const response = await axios.get(

@@ -26,7 +26,7 @@ const Hero = () => {
         <div class="text-center lg:w-5/12 w-full">
           <div className="flex items-center justify-center">
             <h1 className="text-white my-5 mb-10 text-3xl font-bold leading-tight">
-              Lacking Jokes?
+              Lack of Dad Jokes?
             </h1>
           </div>
 

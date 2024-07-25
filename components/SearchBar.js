@@ -15,7 +15,7 @@ const SearchBar = ({ searchTerm, setSearchTerm }) => {
           htmlFor="search"
           className="mb-10 block text-center font-light text-5xl text-gray-900"
         >
-          Search for Dad Jokes
+          Explore Dad Jokes
         </label>
         <div className="relative shadow-md rounded-lg">
           <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">

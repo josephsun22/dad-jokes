@@ -59,9 +59,7 @@ const GroupedJokes = ({ jokes, term, searching, debouncing }) => {
       <GoogleFonts
         href="https://fonts.googleapis.com/css2?family=Cantarell:ital,wght@0,400;0,700;1,400;1,700&family=Cute+Font&display=swap"
         rel="stylesheet"
-      >
-        {" "}
-      </GoogleFonts>
+      ></GoogleFonts>
       <div
         className="flex justify-center min-h-screen bg-opacity-10"
         style={{

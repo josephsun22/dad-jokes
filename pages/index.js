@@ -5,10 +5,12 @@ import RandomJoke from "@/components/RandomJoke";
 
 export default function JokesPage() {
   const [term, setTerm] = useState("");
+  const [searching, setSearching] = useState(false)
   const [searchJokes, setSearchJokes] = useState([]);
   const debounceRef = useRef(null);
 
   const fetchSearchJokes = useCallback(async (term) => {
+    setSearching(true);
     try {
       const response = await fetch(`/api/searchJokes?term=${term}`);
       const data = await response.json();
@@ -16,6 +18,8 @@ export default function JokesPage() {
     } catch (error) {
       console.error("Error fetching jokes:", error);
       setSearchJokes([]);
+    } finally {
+      setSearching(false)
     }
   }, []);
 
@@ -45,7 +49,7 @@ export default function JokesPage() {
       <RandomJoke />
       <SearchBar searchTerm={term} setSearchTerm={setTerm} />
 
-      <GroupedJokes jokes={searchJokes} term={term} />
+      <GroupedJokes jokes={searchJokes} term={term} searching={searching}/>
    
     </div>
   );

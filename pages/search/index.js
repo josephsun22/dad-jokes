@@ -7,8 +7,7 @@ export default function Search() {
   const [term, setTerm] = useState("");
   const [searching, setSearching] = useState(false);
   const [searchJokes, setSearchJokes] = useState([]);
-  const debounceRef = useRef(null);
-  const [isDebouncing, setIsDebouncing] = useState(false);
+  const debounceRef = useRef({ timer: null, isDebouncing: false });
 
   const fetchSearchJokes = useCallback(async (term) => {
     setSearching(true);
@@ -26,28 +25,28 @@ export default function Search() {
 
   useEffect(() => {
     // Clear previous timeout
-    if (debounceRef.current) {
+    if (debounceRef.current.timer) {
       clearTimeout(debounceRef.current);
     }
 
     // Set new timeout
     if (term.trim()) {
-      setIsDebouncing(true);
-      console.log("Debouncing started" + isDebouncing);
-      debounceRef.current = setTimeout(() => {
+      debounceRef.current.isDebouncing = true;
+      console.log("Debouncing started");
+      debounceRef.current.timer = setTimeout(() => {
         fetchSearchJokes(term);
-        setIsDebouncing(false);
-        console.log("Debouncing ended" + isDebouncing);
+        debounceRef.current.isDebouncing = false;
+        console.log("Debouncing ended");
       }, 1000); // Type delay time here
     } else {
-      setIsDebouncing(false);
+      debounceRef.current.isDebouncing = false;
     }
 
     // Cleanup function to clear the timeout on unmount
     return () => {
-      if (debounceRef.current) {
-        clearTimeout(debounceRef.current);
-        setIsDebouncing(false);
+      if (debounceRef.current.timer) {
+        clearTimeout(debounceRef.current.timer);
+        debounceRef.current.isDebouncing = false;
       }
     };
   }, [term, fetchSearchJokes]);
@@ -59,7 +58,7 @@ export default function Search() {
         jokes={searchJokes}
         term={term}
         searching={searching}
-        debouncing={isDebouncing}
+        debouncing={debounceRef.current.isDebouncing}
       />
       <GoHomeButton />
     </>

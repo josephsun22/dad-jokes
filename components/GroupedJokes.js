@@ -19,17 +19,18 @@ const GroupedJokes = ({ jokes, term, searching, debouncing }) => {
     );
 
   const renderContent = () => {
+    if (!term) {
+      return (
+        <p className="text-center text-gray-600">Start typing to search!</p>
+      );
+    }
     if (debouncing) {
       return <p className="text-center text-gray-600">Typing...</p>;
     }
     if (searching) {
       return <p className="text-center text-gray-600">Searching...</p>;
     }
-    if (!term) {
-      return (
-        <p className="text-center text-gray-600">Start typing to search!</p>
-      );
-    }
+
     return (
       <>
         <div className="mb-4">
